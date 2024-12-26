@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+
+<ul>
+  {% for item in article %}
+    <div class="card" col-3>
+      <img src="{{ asset('uploads/images/' ~ item.image) }}" width="100" height="100">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.titre }}, {{ item.id }}</h5>
+        <p class="card-text">{{ item.texte }}</p>
+        <p>{{ item.date|date("m/d/Y") }}</p>
+        <a href="{{path ('article_edit', {'id': item.id})}}" class="btn btn-outline-info">Modifier</a>
+        <a href="{{path ('supprimer_article', {'id': item.id})}}" class="btn btn-outline-danger">Supprimer</a>
+      </div>
+    </div>
+  {% endfor %}
+</ul>
+
+
+{% endblock %}

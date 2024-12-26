@@ -1,0 +1,32 @@
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <div class="sb-sidenav-menu-heading">Article</div>
+                    <a class="nav-link" href="{{ path('article_create') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Create an article 
+                        <div class="small">Access Restricted</div>
+                    </a>
+                    <a class="nav-link" href="{{ path('article_liste') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Liste des articles
+                    </a>
+                </div>
+            </div>
+            <div class="sb-sidenav-footer">
+                
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <div class="small">Logged in as:</div>
+                    {{ app.user.userIdentifier }} 
+                    <br>
+                    <a class="btn btn-outline-danger" href="{{ path('app_logout') }}">Logout</a>
+                {% else %}
+                    <div class="small">You are deconnected</div>
+                    <a class="btn btn-outline-primary" href="{{ path('app_login') }}">Login</a>
+                {% endif %}
+            </div>
+        </nav>
+    </div>
+</div>
